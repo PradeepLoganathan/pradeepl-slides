@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Clean the public directory
+echo "Cleaning public directory..."
+rm -rf public/*
+
 # Ensure Marp CLI is installed
 if ! command -v marp &> /dev/null
 then
@@ -7,7 +11,11 @@ then
     exit 1
 fi
 
-# Iterate through Markdown files in `content/slides`
+# Define paths for global dark mode files
+dark_mode_css="dark-mode.css"
+dark_mode_js="dark-mode.js"
+
+# Iterate through Markdown files in content/slides
 for presentation_dir in content/slides/*/
 do
     presentation_name=$(basename "$presentation_dir")
@@ -33,6 +41,10 @@ do
     else
         echo "No images directory found for $presentation_name."
     fi
+
+    # Copy global dark mode files to the output directory
+    cp "$dark_mode_css" "$output_dir/"
+    cp "$dark_mode_js" "$output_dir/"
 done
 
 echo "Slides built successfully!"
