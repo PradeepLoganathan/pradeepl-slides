@@ -48,3 +48,6 @@ do
 done
 
 echo "Slides built successfully!"
+
+node generate-index.js
+echo "Index created successfully!"
