@@ -1,11 +1,20 @@
 ---
+title: "Policy as Code: Transforming Governance in the Cloud Era"
+description: "A deep dive into Policy as Code (PaC) for cloud governance."
+date: 2025-03-07
+weight: 1
+cover:
+  image: "/slides/images/what-is-pac.jpg"
+  alt: "Policy as Code Cover"
+slide_html: "policy-as-code.html"
+slide_pdf: "policy-as-code.pdf"
 marp: true
 theme: default
 paginate: true
 class: 
   - lead
-  
 ---
+
 
 # Policy as Code: Transforming Governance in the Cloud Era
 

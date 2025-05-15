@@ -1,11 +1,30 @@
 ---
 marp: true
-theme: uncover 
+theme: default 
 paginate: true
-header: 'Model Context Protocol (MCP)'
 footer: 'https://pradeepl.com/series/model-context-protocol'
 title: 'Model Context Protocol (MCP)'
 ---
+<style>
+  section {
+    font-size: 28px; /* Or try 0.9em, 90%, etc. Experiment to find what works */
+  }
+
+  section li {
+    font-size: 0.9em; /* This makes li font size relative to the section's font size */
+    line-height: 1.4;
+  }
+  
+  section p {
+    font-size: 0.9em; /* Adjust paragraph font size if needed */
+  }
+
+  /* You can also target specific heading levels if they are too large */
+  section h3 {
+    font-size: 1.6em; /* Example: make h3 smaller */
+  }
+
+</style>
 
 # Model Context Protocol (MCP)
 ## Bridging the Gap for AI Integration
@@ -13,8 +32,7 @@ Pradeep Loganathan
 
 ---
 
-## The Landscape: LLMs & Integration Hurdles
-
+### The Landscape:
 * **The Power and Limitations of LLMs:**
     * Remarkable capabilities but inherently isolated.
     * Knowledge is static, based on training data cut-offs.
@@ -22,46 +40,41 @@ Pradeep Loganathan
     * Access real-time information (news, stocks, etc.).
     * Incorporate proprietary/domain-specific knowledge.
     * Personalize responses.
-* **Common Data Integration Approaches:**
-    * Retrieval Augmented Generation (RAG)
-    * Fine-tuning
-    * Direct API Calls
 
 ---
 
-## The Landscape: Integration approaches
+### Integration approaches
 
 * **Common Data Integration Approaches:**
     * Retrieval Augmented Generation (RAG)
-    * Fine-tuning
     * Direct API Calls
-
----
-
-## The Landscape: Tools & Action-Taking
+    * Others .. LangChain et all
 
 * **Need for External Tools & Resources:**
     * Perform actions (send emails, book appointments).
     * Utilize specialized computation (code interpreters, math solvers).
     * Access/manipulate files.
+
+---
+
+### The Landscape: Tools & Action-Taking
+
 * **Common Tool Integration Approaches:**
     * Function Calling / Tool Usage (e.g., OpenAI Functions, LangChain Agents)
     * Custom API Integrations
     * Agentic Frameworks
 ---
 
-## Tool integration Workflow
-!![bg center 100%](./images/tool-integration.png)
-
----
-
-## Foundational vs. Use-Case Specific Models
+## Foundational Models
 
 * **Foundational Models (e.g., GPT-4, Claude, Llama):**
     * Trained on vast, diverse datasets (text, code, images).
     * Possess broad general knowledge and capabilities (text generation, summarization, translation, Q&A).
     * Serve as a base for many applications.
     * Can be powerful but may lack deep expertise in narrow domains or access to proprietary/real-time info.
+---
+## Use-Case Specific Models
+
 * **Use-Case Specific Models:**
     * Often derived from foundational models via fine-tuning or specialized training.
     * Optimized for particular tasks or domains (e.g., medical diagnosis, legal document analysis, customer service bots).
@@ -70,9 +83,9 @@ Pradeep Loganathan
 * *Both types of models benefit from robust integration strategies for external context.*
 
 ---
-## Foundational & Specialized models
 
-![bg center 100%](./images/foundational-specialized.png)
+
+![bg center 50%](./images/foundational-specialized.png)
 
 ---
 
@@ -91,9 +104,11 @@ Pradeep Loganathan
 * *This "spaghetti" of point-to-point integrations highlights the need for a standardized approach.*
 
 ---
-[bg center 100%](./images/mxn-integration.png)
----
 
+![bg center 50%](./images/mxn-integration.png)
+
+---
+---
 ## Solution: The Model Context Protocol (MCP)
 
 * **What is MCP?**
@@ -116,21 +131,22 @@ Pradeep Loganathan
     * **Secure Communication Channel:** The protocol incorporates mechanisms for secure data exchange, authentication, and authorization between the model and the tool provider.
 ---
 
-## MCP: A Simplified View**
-[bg center 100%](./images/mcp-simplified.png)
+
+![bg center 50%](./images/mcp-simplified.png)
+
 ---
 
 ## MCP: Under the Hood - Technical Foundations
 
 * **Communication Backbone:**
-    * JSON-RPC: [Explain its role in MCP as per the blog - e.g., lightweight, request/response]
+    * JSON-RPC
     * Standardized message structures (requests, responses, notifications).
     
 * **Flexible Transport Layers:**
-    * STDIO (Standard Input/Output): [Use cases/details from blog]
-    * HTTP/SSE (Server-Sent Events): [Use cases/details from blog]
-    * WebSockets: [Use cases/details from blog]
-    * [Mention any pros/cons discussed for each in the blog]
+    * STDIO (Standard Input/Output)
+    * HTTP/SSE (Server-Sent Events)
+    * WebSockets
+   
 
 ---
 
@@ -138,121 +154,17 @@ Pradeep Loganathan
 
 * **Capability Discovery:**
     * How models find out what tools/resources are available.
-    * [Explain the mechanism from the blog: e.g., registration, manifests, discovery endpoints]
     * Types: Tools (code interpreters), Resources (databases), Prompts.
 * **Invocation Methods:**
     * How MCP facilitates calls to tools/resources.
-    * [Describe sync/async calls, streaming, specific patterns from the blog]
     * Standardized handling of responses and errors.
 
 ---
 
-## MCP: Security by Design
-
-* **Key Security Principles:**
-    * Authentication: [How client/server identities are verified - from blog]
-    * Authorization: [Permission management for tools/resources - from blog]
-    * Data Privacy: [Measures for data protection - from blog]
-    * Sandboxing: [Isolating tool execution - from blog]
-    * [Add other security aspects discussed in the blog]
+![bg center 50%](./images/MCP-interaction.png)
 
 ---
 
-## MCP: Interaction Flow Example
-
-```mermaid
-sequenceDiagram
-    participant Client as LLM (MCP Client)
-    participant Server as MCP Host (Tool Provider)
-    participant ExternalTool as Actual Tool/Resource
-
-    Client->>Server: DiscoverCapabilitiesRequest
-    Server-->>Client: DiscoverCapabilitiesResponse (list of available tools/resources)
-
-    Client->>Server: InvokeCapabilityRequest (capability_id, params)
-    Server->>ExternalTool: ExecuteAction(params)
-    ExternalTool-->>Server: ActionResult
-    Server-->>Client: InvokeCapabilityResponse (result/error)
-```
-* *Instructions: Replace with a more detailed/specific technical Mermaid diagram from the blog if available.*
-
+![bg center 50%](./images/mcp-acme-stock.png)
 ---
 
-## Putting MCP into Practice (Assumed Content)
-
-* **For Tool Providers: Setting up an MCP Host**
-    * [Steps/considerations for exposing tools via MCP - Get from blog]
-    * Server-side libraries or SDKs?
-* **For Model Integrators: Using an MCP Client**
-    * [Client-side integration details - Get from blog]
-    * How models formulate MCP requests.
-* **Defining Capabilities: Schemas & Interfaces**
-    * [How are tools described? OpenAPI, JSON Schema, custom format? - From blog]
-
----
-
-## MCP in Action: Illustrative Use Cases (Assumed Content)
-
-* **Example: [Name of Use Case from Blog, e.g., Live Financial Data Query]**
-    * Description: [Details of the use case]
-    * How MCP enables it: [Specific MCP features utilized]
-    * [Relevant diagram if available in the blog]
-
-```mermaid
-graph LR
-    UserQuery["User: What's the current price of ACME stock?"] --> LLMApp[LLM Application];
-    LLMApp -- MCP Request (GetStockPrice, ticker:ACME) --> MCP_Host[MCP Host];
-    MCP_Host --> FinancialTool[Financial Data Tool];
-    FinancialTool -- Fetches Data --> StockExchangeAPI[Stock Exchange API];
-    StockExchangeAPI -- Price Data --> FinancialTool;
-    FinancialTool -- MCP Response (price: $123.45) --> MCP_Host;
-    MCP_Host --> LLMApp;
-    LLMApp --> FinalAnswer["LLM: The current price of ACME stock is $123.45."];
-```
-* *Instructions: Replace with an actual use case and diagram from the blog.*
-* **Further Examples:**
-    * [List other use cases mentioned in the blog]
-
----
-
-## The Road Ahead: Advanced MCP & Future Vision (Assumed Content)
-
-* **Advanced Capabilities:**
-    * [e.g., Tool Chaining, Context Caching, Complex Orchestrations - Get from blog]
-* **Building the MCP Ecosystem:**
-    * [Adoption status, community efforts, related tools/platforms - Get from blog]
-* **Addressing Challenges & Limitations:**
-    * [Any discussed in the blog series - e.g., security complexities, discovery at scale]
-* **Future Development / Roadmap:**
-    * [Planned features or vision for MCP's evolution - Get from blog]
-
----
-
-## MCP: Envisioning the Future (Assumed Content)
-
-```mermaid
-graph TD
-    MCP_Standard["Core MCP Standard & Protocols"]
-    MCP_Standard --> OpenSourceImplementations["Open Source Implementations (Clients/Hosts)"]
-    MCP_Standard --> ToolMarketplaces["Tool Registries & Marketplaces"]
-    
-    OpenSourceImplementations --> ModelDevelopers["AI/LLM Developers"]
-    OpenSourceImplementations --> ToolDevelopers["Tool & Service Providers"]
-
-    ModelDevelopers -- Easily Integrate --> DiverseTools["Vast Ecosystem of MCP-Compliant Tools"]
-    ToolDevelopers -- Easily Expose --> DiverseTools
-
-    DiverseTools <--> SmartApplications["Next-Generation AI Applications"]
-    ToolMarketplaces -- Facilitate Discovery --> SmartApplications
-```
-* *Instructions: Replace with a relevant future/ecosystem diagram from the blog if available.*
-
----
-
-## Conclusion & Discussion
-
-* **Recap: The Value Proposition of MCP**
-    * [Summarize key advantages: Simplification, Standardization, Scalability, Security]
-* **Call to Action / Next Steps**
-    * [e.g., Read the full blog series, explore available implementations, contribute to the standard if applicable]
-* **Thank You & Questions?**
