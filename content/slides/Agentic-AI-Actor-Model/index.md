@@ -27,8 +27,18 @@ style: |
   
   /* Ensure content starts below the header for all slides */
   section {
-    padding: 120px 40px 40px 40px;
+    padding: 0 40px 40px 40px;
     position: relative;
+  }
+  
+  /* Create a consistent content area that starts at a fixed position */
+  section > *:not(h1):not(h2) {
+    margin-top: 160px; /* Fixed distance from top of slide */
+  }
+  
+  /* Reset margins for first content element to avoid double spacing */
+  section > *:not(h1):not(h2):first-of-type {
+    margin-top: 160px;
   }
   
   /* Title slide specific styling - use with <!-- _class: title-slide --> */
@@ -78,7 +88,7 @@ style: |
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 2px !important;
+    height: 1px !important;
     background: linear-gradient(to right, #00FF00, #00B7EB, #800080);
   }
   
@@ -118,8 +128,6 @@ By Pradeep Loganathan
 ---
 # The Rise of Agentic AI
 
-## A New Era of Intelligent Automation
-
 - **Explosive Growth of AI-Driven Applications:**
   - Demand for immediate insights and decisions is paramount.
   - AI algorithms analyze vast data quickly, enabling predictive insights.
@@ -134,22 +142,21 @@ By Pradeep Loganathan
 ---
 # What is Agentic AI?
 
-### Autonomous, Context-Aware, and Action-Oriented Services
-- **Definition:** Autonomous services executing intelligent, long-running workflows.
-- They call Large Language Models (LLMs), process responses, and execute actions.
+- Autonomous, Context-Aware, and Action-Oriented Services
+    - **Definition:** Autonomous services executing intelligent, long-running workflows.
+    - They call Large Language Models (LLMs), process responses, and execute actions.
 
-### Key Characteristics:
-- **Durable Execution:** Workflows complete reliably.
-- **Context Retention:** Agents maintain context across interactions.
-- **Coordination:** Adaptability and distributed coordination.
-- **Tool Use:** Integration with databases, APIs, and enterprise systems.
+- Key Characteristics:
+    - **Durable Execution:** Workflows complete reliably.
+    - **Context Retention:** Agents maintain context across interactions.
+    - **Coordination:** Adaptability and distributed coordination.
+    - **Tool Use:** Integration with databases, APIs, and enterprise systems.
 
-### The Challenge:
-- Dependency on failure-prone services and high-latency LLMs.
+- The Challenge:
+    - Dependency on failure-prone services and high-latency LLMs.
 ---
 
 # The Demands of Agentic AI
-## Why Traditional Approaches Fall Short
 
 
 - **Resilience & Durability:**
@@ -162,13 +169,15 @@ By Pradeep Loganathan
   - Poor resource management under dynamic loads.
 - **Operational Complexity & Cost:**
   - High infrastructure costs and technical debt.
+---
 
+<!-- _class: section-slide -->
+
+# The Actor Model 
 
 ---
 
 # Introducing the Actor Model
-## Foundation for Agentic AI
-
 
 - **Core Concept:**
   - Actors: lightweight, isolated, asynchronous messaging.
@@ -176,12 +185,9 @@ By Pradeep Loganathan
   - Responsive, Resilient, Elastic, Message-driven.
 - **Advantages:**
   - No shared mutable state, efficient concurrency, encapsulation.
-
-
 ---
 
 # Actor Model for Resilience
-
 
 - **Hierarchical Supervision:**
   -   Fault isolation and automated recovery.
@@ -191,6 +197,4 @@ By Pradeep Loganathan
   -   Built-in recovery and workload replication.
 - **Benefit:**
   -   Durable workflows amidst external failures.
-
-
 ---

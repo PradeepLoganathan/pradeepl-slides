@@ -1,163 +1,160 @@
 ---
 marp: true
-theme: default 
+theme: default
 paginate: true
 footer: 'https://pradeepl.com/series/model-context-protocol'
 title: 'Model Context Protocol (MCP)'
 ---
+
 <style>
   section {
-    font-size: 28px; /* Or try 0.9em, 90%, etc. Experiment to find what works */
+    font-size: 28px; /* Base font size */
   }
-
   section li {
-    font-size: 0.9em; /* This makes li font size relative to the section's font size */
+    font-size: 0.9em; /* List items relative size */
     line-height: 1.4;
   }
-  
   section p {
-    font-size: 0.9em; /* Adjust paragraph font size if needed */
+    font-size: 0.9em;
   }
-
-  /* You can also target specific heading levels if they are too large */
   section h3 {
-    font-size: 1.6em; /* Example: make h3 smaller */
+    font-size: 1.6em;
   }
-
 </style>
 
 # Model Context Protocol (MCP)
-## Bridging the Gap for AI Integration
-Pradeep Loganathan
+## Bridging the Gap for AI Integration  
+_Pradeep Loganathan_
 
 ---
 
-### The Landscape:
-* **The Power and Limitations of LLMs:**
-    * Remarkable capabilities but inherently isolated.
-    * Knowledge is static, based on training data cut-offs.
-* **Need for External Data:**
-    * Access real-time information (news, stocks, etc.).
-    * Incorporate proprietary/domain-specific knowledge.
-    * Personalize responses.
+### The Landscape: AI Today  
+* **Strengths of Large Language Models (LLMs):**  
+  - Remarkable natural language understanding and generation  
+  - Trained on vast datasets for broad knowledge  
+* **Key Limitations:**  
+  - Static knowledge, limited to training cutoff date  
+  - Lack of access to real-time or proprietary data  
+  - Isolated from action-taking capabilities  
 
 ---
 
-### Integration approaches
-
-* **Common Data Integration Approaches:**
-    * Retrieval Augmented Generation (RAG)
-    * Direct API Calls
-    * Others .. LangChain et all
-
-* **Need for External Tools & Resources:**
-    * Perform actions (send emails, book appointments).
-    * Utilize specialized computation (code interpreters, math solvers).
-    * Access/manipulate files.
+### The Need for Integration  
+* **Access to Real-Time & Domain-Specific Data:**  
+  - News updates, stock prices, personal data  
+* **Performing Actions:**  
+  - Sending emails, booking appointments  
+* **Leveraging Specialized Tools:**  
+  - Code interpreters, math solvers, file systems  
 
 ---
 
-### The Landscape: Tools & Action-Taking
-
-* **Common Tool Integration Approaches:**
-    * Function Calling / Tool Usage (e.g., OpenAI Functions, LangChain Agents)
-    * Custom API Integrations
-    * Agentic Frameworks
----
-
-## Foundational Models
-
-* **Foundational Models (e.g., GPT-4, Claude, Llama):**
-    * Trained on vast, diverse datasets (text, code, images).
-    * Possess broad general knowledge and capabilities (text generation, summarization, translation, Q&A).
-    * Serve as a base for many applications.
-    * Can be powerful but may lack deep expertise in narrow domains or access to proprietary/real-time info.
----
-## Use-Case Specific Models
-
-* **Use-Case Specific Models:**
-    * Often derived from foundational models via fine-tuning or specialized training.
-    * Optimized for particular tasks or domains (e.g., medical diagnosis, legal document analysis, customer service bots).
-    * May incorporate specific datasets, rules, or be smaller and more efficient for their target task.
-    * Still often require integration with external tools/data for full functionality.
-* *Both types of models benefit from robust integration strategies for external context.*
+### Current Integration Approaches  
+* **Retrieval Augmented Generation (RAG)**  
+* **Direct API Calls**  
+* **Agent Frameworks (e.g., LangChain)**  
+* **Challenges:** Diverse auth methods, data formats, brittle integrations  
 
 ---
 
+### Tool & Action Integration Patterns  
+* **Function Calling / Tool Usage:** OpenAI Functions, LangChain Agents  
+* **Custom API Integrations**  
+* **Agentic Frameworks**  
+
+---
+
+## Foundational Models  
+* Trained on diverse data (text, code, images)  
+* General purpose: text generation, summarization, translation, Q&A  
+* Base for many applications  
+* May lack domain depth or real-time info  
+
+---
+
+## Use-Case Specific Models  
+* Fine-tuned from foundational models or trained on specific data  
+* Specialized for domains like medicine, law, customer support  
+* Often smaller, more efficient  
+* Usually still require external data/tool integration  
+
+> Both foundational and specialized models **benefit from robust external context integration**  
+
+---
 
 ![bg center 50%](./images/foundational-specialized.png)
 
 ---
 
-## The M x N Integration Challenge
+## The M x N Integration Challenge  
 
-* **The Core Problem:** Integrating *M* AI models with *N* external tools/APIs/data sources becomes exponentially complex.
-* **1 Model x N Tools:**
-    * Bespoke integrations for each tool.
-    * Diverse auth methods, data formats, error handling.
-    * Leads to brittle, hard-to-maintain deployments.
-* **M Models x N Tools:**
-    * Duplicated integration efforts across models.
-    * Inconsistent behaviors.
-    * Difficulty updating or swapping components.
+* **Problem:** Integrating *M* AI models with *N* external tools/APIs grows exponentially complex  
+* **1 Model x N Tools:**  
+  - Multiple bespoke integrations  
+  - Diverse auth, data formats, error handling  
+  - Maintenance nightmares  
+* **M Models x N Tools:**  
+  - Repeated effort across models  
+  - Inconsistent behavior  
+  - Difficult upgrades or swaps  
 
-* *This "spaghetti" of point-to-point integrations highlights the need for a standardized approach.*
+> This "spaghetti" of point-to-point integrations calls for a standardized approach  
 
 ---
 
 ![bg center 50%](./images/mxn-integration.png)
 
 ---
----
-## Solution: The Model Context Protocol (MCP)
 
-* **What is MCP?**
-    * A specification, initially proposed by researchers at Anthropic and since developed as an open standard, for how AI models can securely and reliably interact with external tools and data sources.
-    * A standardized protocol designed to simplify and streamline how AI models interact with external tools, data, and systems.
-* **Why MCP? Key Benefits:**
-    * **Standardization:** Reduces complexity of M x N integrations.
-    * **Interoperability:** Enables models and tools to connect more easily.
-    * **Discoverability:** Allows models to find and understand available capabilities.
-    * **Security:** Provides a framework for secure interactions.
+## Solution: Model Context Protocol (MCP)  
 
----
+* **What is MCP?**  
+  - An open standard protocol enabling secure, reliable AI model interaction with external tools & data  
+* **Key Benefits:**  
+  - **Standardization:** Simplifies M x N integration complexity  
+  - **Interoperability:** Models and tools connect easily  
+  - **Discoverability:** Models can find and understand available capabilities  
+  - **Security:** Framework for secure communication & authorization  
 
-## Core Idea & High-Level View of MCP
-
-* **Fundamental Principles:**
-    * **Decoupling:** MCP separates the AI model (client) from the external tools/data sources (host/provider). The model doesn't need to know the specifics of each tool's API.
-    * **Standardized Interface:** It defines a common language (e.g., using JSON-RPC) for requests (e.g., "discover available tools," "invoke tool X with these parameters") and responses.
-    * **Capability Advertisement:** Tool providers (MCP Hosts) advertise their capabilities (available tools, their inputs/outputs) in a structured way that MCP Clients (models) can understand.
-    * **Secure Communication Channel:** The protocol incorporates mechanisms for secure data exchange, authentication, and authorization between the model and the tool provider.
 ---
 
+## MCP: Core Concepts  
+
+* **Decoupling:**  
+  - Separates AI model (client) from tools/data providers (hosts)  
+  - Models don’t need tool-specific API knowledge  
+* **Standardized Interface:**  
+  - Common language (JSON-RPC) for requests and responses  
+* **Capability Advertisement:**  
+  - Hosts declare their tools and data capabilities in a structured format  
+* **Secure Communication:**  
+  - Authentication and authorization mechanisms included  
+
+---
 
 ![bg center 50%](./images/mcp-simplified.png)
 
 ---
 
-## MCP: Under the Hood - Technical Foundations
+## MCP: Technical Foundations  
 
-* **Communication Backbone:**
-    * JSON-RPC
-    * Standardized message structures (requests, responses, notifications).
-    
-* **Flexible Transport Layers:**
-    * STDIO (Standard Input/Output)
-    * HTTP/SSE (Server-Sent Events)
-    * WebSockets
-   
+* **Communication Backbone:**  
+  - JSON-RPC standard messages (requests, responses, notifications)  
+* **Flexible Transport Layers:**  
+  - STDIO (standard input/output)  
+  - HTTP/SSE (Server-Sent Events)  
+  - WebSockets  
 
 ---
 
-## MCP: Capabilities & Interactions
+## MCP: Capabilities & Interactions  
 
-* **Capability Discovery:**
-    * How models find out what tools/resources are available.
-    * Types: Tools (code interpreters), Resources (databases), Prompts.
-* **Invocation Methods:**
-    * How MCP facilitates calls to tools/resources.
-    * Standardized handling of responses and errors.
+* **Capability Discovery:**  
+  - Models learn which tools/resources are available  
+  - Includes tools (interpreters), data resources, prompts  
+* **Invocation & Responses:**  
+  - Standardized tool/resource invocation  
+  - Unified error and response handling  
 
 ---
 
@@ -165,6 +162,5 @@ Pradeep Loganathan
 
 ---
 
-![bg center 50%](./images/mcp-acme-stock.png)
----
+![bg center 100%](./images/mcp-acme-stock.png)
 
