@@ -22,6 +22,10 @@ section {
   position: relative;
 }
 
+section .content {
+  margin-top: 80px;
+}
+
 h1 {
   position: absolute;
   top: 60px; /* Adjusted for top bar */
@@ -48,7 +52,7 @@ h2 {
 section > ul:first-of-type,
 section > ol:first-of-type,
 section > p:first-of-type {
-  margin-top: 180px; /* Adjusted for top bar and repositioned headers */
+  margin-top: 80px; /* Adjusted for top bar and repositioned headers */
 }
 
 /* Handle other content elements */
