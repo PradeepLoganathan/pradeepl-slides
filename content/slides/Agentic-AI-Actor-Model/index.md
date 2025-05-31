@@ -1,40 +1,115 @@
 ---
 marp: true
-title: Building Next-Generation Agentic AI with Actor Model Microservices
-subtitle: The Essential Role of Resilient, High-Performance Architectures
+title: Agentic AI with Actor Model Microservices
+subtitle: Need for Resilient, High-Performance Architectures
 author: Pradeep Loganathan
 paginate: true
 theme: default
 size: 16:9
 style: |
-  /* Reduce font sizes */
+  /* Default styles for regular slides */
   h1 {
+    position: absolute;
+    top: 20px;
+    left: 40px;
     font-size: 1.8em;
     line-height: 1.2;
+    margin: 0;
   }
   h2 {
+    position: absolute;
+    top: 90px;
+    left: 40px;
     font-size: 1.3em;
-  }
-  .subtitle {
-    font-size: 1.1em;
+    margin: 0;
     color: #555;
   }
+  
+  /* Ensure content starts below the header for all slides */
+  section {
+    padding: 120px 40px 40px 40px;
+    position: relative;
+  }
+  
+  /* Title slide specific styling - use with <!-- _class: title-slide --> */
+  section.title-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+  }
+  
+  section.title-slide h1 {
+    position: static; /* Override absolute positioning */
+    font-size: 2.2em;
+    margin: 0 0 20px 0;
+    color: #333;
+  }
+  
+  section.title-slide h2 {
+    position: static; /* Override absolute positioning */
+    font-size: 1.5em;
+    margin: 0 0 30px 0;
+    color: #666;
+  }
+  
+  section.title-slide p {
+    font-size: 1.1em;
+    margin: 0;
+    color: #888;
+  }
+  
   li {
     font-size: 0.9em;
     line-height: 1.3;
   }
-  /* Adjust slide margins and padding */
-  section {
-    padding: 40px;
-  }
-  /* Ensure lists don't overflow */
+  
   ul, ul ul, ul ul ul {
     margin: 0;
     padding-left: 20px;
   }
+  
+  /* Add gradient line at the bottom of each slide */
+  section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px !important;
+    background: linear-gradient(to right, #00FF00, #00B7EB, #800080);
+  }
+  
+  .marp-slide > div:last-child {
+    display: none;
+  }
+  
+  /* Section slide styling: Center the header in the middle of the slide */
+  section.section-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+  }
+  section.section-slide h1 {
+    position: static;
+    font-size: 2em;
+    margin: 0;
+  }
+  section.section-slide h2 {
+    display: none;
+  }
+  section.section-slide .content {
+    display: none;
+  }
 ---
 
-# Building Next-Generation Agentic AI with Actor Model Microservices
+<!-- _class: title-slide -->
+
+# Agentic AI 
 
 ## The Essential Role of Resilient, High-Performance Architectures 
 
@@ -76,6 +151,7 @@ By Pradeep Loganathan
 # The Demands of Agentic AI
 ## Why Traditional Approaches Fall Short
 
+
 - **Resilience & Durability:**
   - Traditional error handling fails in distributed systems.
 - **Performance & Responsiveness:**
@@ -86,9 +162,13 @@ By Pradeep Loganathan
   - Poor resource management under dynamic loads.
 - **Operational Complexity & Cost:**
   - High infrastructure costs and technical debt.
+
+
 ---
+
 # Introducing the Actor Model
 ## Foundation for Agentic AI
+
 
 - **Core Concept:**
   - Actors: lightweight, isolated, asynchronous messaging.
@@ -96,8 +176,13 @@ By Pradeep Loganathan
   - Responsive, Resilient, Elastic, Message-driven.
 - **Advantages:**
   - No shared mutable state, efficient concurrency, encapsulation.
+
+
 ---
+
 # Actor Model for Resilience
+
+
 - **Hierarchical Supervision:**
   -   Fault isolation and automated recovery.
 - **Failure as Domain Model:**
@@ -106,4 +191,6 @@ By Pradeep Loganathan
   -   Built-in recovery and workload replication.
 - **Benefit:**
   -   Durable workflows amidst external failures.
+
+
 ---
