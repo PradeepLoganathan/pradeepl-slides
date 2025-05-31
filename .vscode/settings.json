@@ -1,1 +1,18 @@
-{}
+# .vscode/settings.json (for VS Code Marp extension)
+{
+  "markdown.marp.themes": [
+    "./themes/pradeepl-slides-theme.css"
+  ]
+}
+
+# Alternative: marp.config.js (for Marp CLI)
+module.exports = {
+  themeSet: ['./themes/pradeepl-slides-theme.css']
+}
+
+# Alternative: package.json script
+{
+  "scripts": {
+    "build-slides": "marp --theme ./themes/pradeepl-slides-theme.css --html content/slides/slide1topic/index.md"
+  }
+}

@@ -11,9 +11,19 @@ then
     exit 1
 fi
 
-# Define paths for global dark mode files
+# Define paths
 dark_mode_css="dark-mode.css"
 dark_mode_js="dark-mode.js"
+custom_theme="themes/pradeepl-slides-theme.css"
+
+# Check if custom theme exists
+if [ ! -f "$custom_theme" ]; then
+    echo "Warning: Custom theme '$custom_theme' not found. Using default theme."
+    theme_option=""
+else
+    echo "Found custom theme: $custom_theme"
+    theme_option="--theme $custom_theme"
+fi
 
 # Iterate through Markdown files in content/slides
 for presentation_dir in content/slides/*/
@@ -22,29 +32,41 @@ do
     echo "Building presentation: $presentation_name"
     
     output_dir="public/$presentation_name"
-    mkdir -p "$output_dir"  # Create output directory
+    mkdir -p "$output_dir"
 
     # Build the presentation
-    marp "$presentation_dir/index.md" -o "$output_dir/index.html"
+    if [ -n "$theme_option" ]; then
+        echo "Building with custom theme..."
+        marp $theme_option "$presentation_dir/index.md" -o "$output_dir/index.html"
+    else
+        echo "Building with default theme..."
+        marp "$presentation_dir/index.md" -o "$output_dir/index.html"
+    fi
+    
     if [ $? -ne 0 ]; then
         echo "Error: Failed to build $presentation_name. Skipping."
         continue
     fi
 
-    # Check and copy images if they exist
+    # Rest of your existing code...
     images_dir="${presentation_dir}images"
     if [ -d "$images_dir" ]; then
         images_output="$output_dir/images"
-        mkdir -p "$images_output"  # Create the 'images' folder if needed
+        mkdir -p "$images_output"
         cp "$images_dir"/*.{jpg,jpeg,png,gif,svg} "$images_output" 2>/dev/null || true
         echo "Images copied for $presentation_name."
-    else
-        echo "No images directory found for $presentation_name."
     fi
 
-    # Copy global dark mode files to the output directory
-    cp "$dark_mode_css" "$output_dir/"
-    cp "$dark_mode_js" "$output_dir/"
+    # Copy theme and dark mode files
+    if [ -f "$custom_theme" ]; then
+        cp "$custom_theme" "$output_dir/"
+    fi
+    if [ -f "$dark_mode_css" ]; then
+        cp "$dark_mode_css" "$output_dir/"
+    fi
+    if [ -f "$dark_mode_js" ]; then
+        cp "$dark_mode_js" "$output_dir/"
+    fi
 done
 
 echo "Slides built successfully!"

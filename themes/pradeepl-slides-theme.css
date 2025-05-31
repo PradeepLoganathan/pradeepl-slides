@@ -1,0 +1,125 @@
+/*
+ * @theme pradeepl-slides-theme
+ * @description A custom Marp theme for slides with a clean, modern look.
+ * @author Pradeep Loganathan
+ * @auto-scaling true
+ * @size 16:9
+ */
+
+@import 'default';
+
+/* Default styles for regular slides */
+section {
+  padding: 0 40px 40px 40px;
+  position: relative;
+}
+
+h1 {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  font-size: 1.8em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+h2 {
+  position: absolute;
+  top: 90px;
+  left: 40px;
+  font-size: 1.3em;
+  margin: 0;
+  color: #555;
+}
+
+/* Create a consistent content area that starts at a fixed position */
+section > ul:first-of-type,
+section > ol:first-of-type,
+section > p:first-of-type {
+  margin-top: 140px; /* Fixed distance from top of slide for first content */
+}
+
+/* Handle other content elements */
+section > *:not(h1):not(h2) {
+  margin-top: 0; /* Reset other margins */
+}
+
+/* Title slide specific styling - use with <!-- _class: title-slide --> */
+section.title-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+}
+
+section.title-slide h1 {
+  position: static; /* Override absolute positioning */
+  font-size: 2.2em;
+  margin: 0 0 20px 0;
+  color: #333;
+}
+
+section.title-slide h2 {
+  position: static; /* Override absolute positioning */
+  font-size: 1.5em;
+  margin: 0 0 30px 0;
+  color: #666;
+}
+
+section.title-slide p {
+  font-size: 1.1em;
+  margin: 0;
+  color: #888;
+}
+
+/* List styling */
+li {
+  font-size: 0.9em;
+  line-height: 1.3;
+}
+
+ul, ul ul, ul ul ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+/* Add gradient line at the bottom of each slide */
+section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px !important;
+  background: linear-gradient(to right, #00FF00, #00B7EB, #800080);
+}
+
+/* Hide default pagination */
+.marp-slide > div:last-child {
+  display: none;
+}
+
+/* Section slide styling: Center the header in the middle of the slide */
+section.section-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+}
+
+section.section-slide h1 {
+  position: static;
+  font-size: 2em;
+  margin: 0;
+}
+
+section.section-slide h2 {
+  display: none;
+}
+
+section.section-slide .content {
+  display: none;
+}
