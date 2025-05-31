@@ -5,6 +5,7 @@ subtitle: Need for Resilient, High-Performance Architectures
 author: Pradeep Loganathan
 theme: pradeepl-slides-theme
 size: 16:9
+paginate: false
 ---
 
 <!-- _class: title-slide -->
@@ -16,6 +17,7 @@ size: 16:9
 By Pradeep Loganathan
 
 ---
+
 # The Rise of Agentic AI
 
 - **Explosive Growth of AI-Driven Applications:**
@@ -29,7 +31,14 @@ By Pradeep Loganathan
   - Clients expect timely value; delays impact retention and market position.
   - Financial repercussions: Some businesses report losses over $500,000 for a single hour of outage.
   - Even 10% latency increase can significantly degrade user experience.
+
 ---
+
+<!-- _class: image-slide -->
+![](./images/agent-evolution.png)
+
+---
+
 # What is Agentic AI?
 
 - Autonomous, Context-Aware, and Action-Oriented Services
@@ -44,9 +53,11 @@ By Pradeep Loganathan
 
 - The Challenge:
     - Dependency on failure-prone services and high-latency LLMs.
+    - Demands robust underlying architectures.
+
 ---
 
-# The Demands of Agentic AI
+# Challenges of Building Agentic AI Systems
 
 
 - **Resilience & Durability:**
@@ -61,6 +72,16 @@ By Pradeep Loganathan
   - High infrastructure costs and technical debt.
 ---
 
+# The Solution: Actor Model Systems
+## The Best Answer to Agentic AI Challenges
+
+- **Stateless stacks hit a wall:** Durable workflows, in‑context memory, & real‑time coordination over classic request/response models.
+- **Work‑arounds add drag:** Caches, retries, and glue code - a tax on performance & cost.
+- **Time for a stateful runtime:** Need an architecture built for concurrency, isolation, and in‑process state.
+- **Enter the Actor Model:** A proven pattern where lightweight actors own their state, talk via async messages, and self‑heal under supervision---perfect for agentic services.
+
+---
+
 <!-- _class: section-slide -->
 
 # The Actor Model 
@@ -68,6 +89,7 @@ By Pradeep Loganathan
 ---
 
 # Introducing the Actor Model
+## Foundation for Agentic AI
 
 - **Core Concept:**
   - Actors: lightweight, isolated, asynchronous messaging.
