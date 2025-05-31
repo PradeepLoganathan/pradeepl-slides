@@ -3,7 +3,6 @@ marp: true
 title: Agentic AI with Actor Model Microservices
 subtitle: Need for Resilient, High-Performance Architectures
 author: Pradeep Loganathan
-paginate: true
 theme: pradeepl-slides-theme
 size: 16:9
 ---

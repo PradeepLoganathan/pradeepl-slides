@@ -10,13 +10,13 @@
 
 /* Default styles for regular slides */
 section {
-  padding: 0 40px 40px 40px;
+  padding: 40px 40px 40px 40px;
   position: relative;
 }
 
 h1 {
   position: absolute;
-  top: 20px;
+  top: 60px; /* Adjusted for top bar */
   left: 40px;
   font-size: 1.8em;
   line-height: 1.2;
@@ -25,7 +25,7 @@ h1 {
 
 h2 {
   position: absolute;
-  top: 90px;
+  top: 130px; /* Adjusted for top bar */
   left: 40px;
   font-size: 1.3em;
   margin: 0;
@@ -36,7 +36,7 @@ h2 {
 section > ul:first-of-type,
 section > ol:first-of-type,
 section > p:first-of-type {
-  margin-top: 140px; /* Fixed distance from top of slide for first content */
+  margin-top: 180px; /* Adjusted for top bar and repositioned headers */
 }
 
 /* Handle other content elements */
@@ -58,14 +58,14 @@ section.title-slide h1 {
   position: static; /* Override absolute positioning */
   font-size: 2.2em;
   margin: 0 0 20px 0;
-  color: #333;
+  color: #1f4788; /* Blue color matching your image */
 }
 
 section.title-slide h2 {
   position: static; /* Override absolute positioning */
   font-size: 1.5em;
   margin: 0 0 30px 0;
-  color: #666;
+  color: #4a4a4a; /* Darker gray for subtitle */
 }
 
 section.title-slide p {
@@ -85,19 +85,57 @@ ul, ul ul, ul ul ul {
   padding-left: 20px;
 }
 
-/* Add gradient line at the bottom of each slide */
-section::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px !important;
-  background: linear-gradient(to right, #00FF00, #00B7EB, #800080);
+/* Add gradient lines at both TOP and BOTTOM of each slide */
+section {
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-image: linear-gradient(to right, #00FF00, #00B7EB, #800080) 1;
 }
 
-/* Hide default pagination */
-.marp-slide > div:last-child {
+/* Custom smaller pagination styling */
+section {
+  counter-increment: slide-number;
+}
+
+section::before {
+  content: counter(slide-number);
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  font-size: 0.7em;
+  color: #999;
+  opacity: 0.7;
+  font-family: monospace;
+  z-index: 10;
+}
+
+/* Hide ALL default pagination attempts */
+section[data-marpit-pagination]::after,
+section > footer,
+.marp-slide > div:last-child,
+section::after[content*="attr"] {
+  display: none !important;
+}
+
+/* More specific selectors to hide Marp's built-in pagination */
+section > div:last-child,
+section > span:last-child {
+  display: none !important;
+}
+
+/* Override any pagination that Marp injects */
+section *[class*="pagination"],
+section *[data-pagination] {
+  display: none !important;
+}
+
+/* Hide pagination on title slides */
+section.title-slide::before {
+  display: none;
+}
+
+/* Hide pagination on section slides */
+section.section-slide::before {
   display: none;
 }
 
