@@ -168,26 +168,28 @@ section.title-slide {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: var(--slide-padding);
+  padding: 60px 60px 120px 60px; /* Increased padding for better spacing */
   position: relative;
-  overflow: hidden;
+  min-height: 100vh; /* Ensure it takes full viewport height */
+  background: linear-gradient(135deg, #0D7377 0%, #14A085 20%, #00B4D8 40%, #0077BE 60%, #5A189A 80%, #7209B7 100%); /* Apply gradient directly */
 }
 
-section.title-slide::before {
+/* section.title-slide::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: var(--diagonal-gradient);
   transform: rotate(-15deg);
   z-index: -1;
-}
+  opacity: 0.9;
+} */
 
 section.title-slide > * {
   position: relative;
-  z-index: 1;
+  z-index: 1; /* Ensure all content is above the gradient */
 }
 
 section.title-slide h1 {
@@ -195,7 +197,7 @@ section.title-slide h1 {
   font-size: clamp(1.8em, 5vw, 2.5em);
   font-weight: 700;
   margin: 0 0 20px 0;
-  color: #ffffff;
+  color: #ffffff; /* White text for contrast with dark gradient */
   font-family: 'Inter', sans-serif;
   text-shadow: 0 2px 4px rgba(0,0,0,0.3);
   max-height: none;
@@ -208,7 +210,7 @@ section.title-slide h2 {
   font-size: clamp(1.2em, 3.5vw, 1.6em);
   font-weight: 400;
   margin: 0 0 30px 0;
-  color: #f8f9fa;
+  color: #f8f9fa; /* Light gray for subtitle */
   font-family: 'Inter', sans-serif;
   text-shadow: 0 1px 2px rgba(0,0,0,0.2);
   max-height: none;
@@ -219,7 +221,7 @@ section.title-slide h2 {
 section.title-slide p {
   font-size: 1.1em;
   margin: 0;
-  color: #e9ecef;
+  color: #e9ecef; /* Light gray for byline */
   position: relative;
   z-index: 1;
 }
