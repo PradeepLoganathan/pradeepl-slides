@@ -13,13 +13,19 @@
 
 /* CSS Custom Properties for consistent theming */
 :root {
+  /* Gradients */
   --primary-gradient: linear-gradient(to right, #0D7377, #14A085, #00B4D8, #0077BE, #5A189A, #7209B7);
   --diagonal-gradient: linear-gradient(135deg, #0D7377 0%, #14A085 20%, #00B4D8 40%, #0077BE 60%, #5A189A 80%, #7209B7 100%);
-  --title-color: #1f4788;
-  --subtitle-color: #4a4a4a;
-  --text-color: #333;
-  --light-text: #666;
-  --lighter-text: #888;
+  
+  /* Colors */
+  --title-color: #1a3a6e;
+  --subtitle-color: #3a3a3a;
+  --text-color: #2d3748;
+  --light-text: #4a5568;
+  --lighter-text: #718096;
+  --code-bg: #f8fafc;
+  --code-border: #e2e8f0;
+  --border-highlight: #e2e8f0;
   --border-width: 6px;
   --slide-padding: 40px;
   --content-start: 220px;
@@ -52,6 +58,23 @@ section::before {
   opacity: 0.7;
   font-family: 'JetBrains Mono', monospace;
   z-index: 10;
+}
+
+/* Footer styling for copyright */
+footer {
+  position: absolute;
+  bottom: 10px;
+  left: var(--slide-padding);
+  font-size: 0.6em;
+  color: var(--light-text);
+  opacity: 0.7;
+  font-family: 'Inter', sans-serif;
+  z-index: 10;
+}
+
+/* Adjust pagination position when footer is present */
+section::before {
+  right: var(--slide-padding);
 }
 
 /* Improved header positioning and styling */
@@ -146,19 +169,107 @@ pre code {
 table {
   border-collapse: collapse;
   width: 100%;
-  margin: 1em 0;
+  margin: 1.5em 0;
   font-size: 0.9em;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 th, td {
-  border: 1px solid #ddd;
-  padding: 0.5em;
+  border: 1px solid var(--code-border);
+  padding: 0.75em 1em;
   text-align: left;
+  line-height: 1.5;
 }
 
 th {
-  background: #f8f9fa;
+  background: var(--code-bg);
   font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  letter-spacing: 0.5px;
+  color: var(--light-text);
+}
+
+tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+/* Quote slide */
+section.quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 2em;
+}
+
+section.quote blockquote {
+  font-size: 1.5em;
+  font-style: italic;
+  color: var(--title-color);
+  border-left: 4px solid var(--code-border);
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+section.quote footer {
+  margin-top: 1em;
+  font-size: 0.8em;
+  color: var(--light-text);
+  font-style: normal;
+}
+
+/* Two-column layout */
+.two-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2em;
+  align-items: start;
+}
+
+/* Image slide */
+section.image-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2em;
+}
+
+section.image-slide img {
+  max-width: 100%;
+  max-height: 60vh;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin: 1em 0;
+}
+
+/* Code block improvements */
+pre {
+  background: #1e1e1e;
+  border: none;
+  border-radius: 8px;
+  padding: 1.25em;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+  line-height: 1.5;
+  color: #d4d4d4;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+pre code {
+  color: inherit;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 /* Enhanced title slide with diagonal gradient */
@@ -194,10 +305,12 @@ section.title-slide > * {
 
 section.title-slide h1 {
   position: static;
-  font-size: clamp(1.8em, 5vw, 2.5em);
-  font-weight: 700;
-  margin: 0 0 20px 0;
-  color: #ffffff; /* White text for contrast with dark gradient */
+  font-size: clamp(2em, 6vw, 3em);
+  font-weight: 800;
+  margin: 0 0 15px 0;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  letter-spacing: -0.5px;
   font-family: 'Inter', sans-serif;
   text-shadow: 0 2px 4px rgba(0,0,0,0.3);
   max-height: none;

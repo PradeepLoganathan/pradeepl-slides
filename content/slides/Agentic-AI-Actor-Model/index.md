@@ -6,6 +6,7 @@ author: Pradeep Loganathan
 theme: pradeepl-slides-theme
 size: 16:9
 paginate: false
+footer: "(c) Pradeep Loganathan 2025"
 ---
 
 <!-- _class: title-slide -->
