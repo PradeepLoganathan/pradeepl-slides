@@ -285,6 +285,20 @@ section.title-slide {
   background: linear-gradient(135deg, #0D7377 0%, #14A085 20%, #00B4D8 40%, #0077BE 60%, #5A189A 80%, #7209B7 100%); /* Apply gradient directly */
 }
 
+/* Make footer on title slide match other slides */
+section.title-slide footer {
+  position: absolute;
+  bottom: 10px;
+  left: var(--slide-padding);
+  font-size: 0.6em;
+  color: rgba(255, 255, 255, 0.7); /* Lighter color for better contrast on gradient */
+  opacity: 0.7;
+  font-family: 'Inter', sans-serif;
+  z-index: 10;
+  width: calc(100% - 2 * var(--slide-padding));
+  text-align: left;
+}
+
 /* section.title-slide::before {
   content: '';
   position: absolute;
@@ -397,9 +411,33 @@ section.image-slide figure {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-section.image-slide h1, 
+section.image-slide h1 {
+  position: absolute;
+  top: calc(var(--border-width) + 20px);
+  left: var(--slide-padding);
+  right: var(--slide-padding);
+  font-size: clamp(1.5em, 4vw, 1.8em);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  max-height: 60px;
+  overflow: hidden;
+  text-align: left;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+
 section.image-slide h2 {
-  display: none;
+  position: absolute;
+  top: calc(var(--border-width) + 90px);
+  left: var(--slide-padding);
+  right: var(--slide-padding);
+  font-size: 1.2em;
+  font-weight: 500;
+  color: var(--subtitle-color);
+  margin: 0;
+  text-align: left;
 }
 
 /* Enhanced quote slide */
