@@ -123,9 +123,23 @@ class:
 
 ---
 
-## Q&A
+<section class="questions-slide">
+# Questions?
 
-- Open floor for questions and discussions.
+## Thank you for your attention!
+
+Feel free to reach out with any questions or feedback.
+</section>
+
+---
+
+<section class="two-columns">
+
+# A NEW ERA
+
+|  |  |
+|---|---|
+| **33%**  <br> of enterprise software apps will include agentic AI by 2028, up from less than 1% in 2024. <br> _Gartner, "Top strategic Technology Trends for 2025," October, 2024._ | **15%**  <br> of day-to-day work decisions will be made autonomously through agentic AI by 2028. <br> _Gartner, "Top Strategic Technology Trends: agentic AI – The evolution of Experience" February 2025_ |
 
 ---
 
